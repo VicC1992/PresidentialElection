@@ -20,6 +20,7 @@ public class User {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
@@ -31,8 +32,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserProfile userProfile;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //tabelul de legatura pentru a realiza relatia many to many
     @JoinTable(name = "users_roles",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "ROEL_ID", referencedColumnName = "ID")})
