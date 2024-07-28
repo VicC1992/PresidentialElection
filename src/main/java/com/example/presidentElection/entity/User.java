@@ -32,9 +32,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private UserProfile userProfile;
+    @Column
+    private String description;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",

@@ -12,12 +12,13 @@
 </head>
 <body>
 <div class="container mt-5 mb-5">
-    <div th:each = "user : ${users}">
-        <p th:text= "${user.firstName}"> </p>
-        <p th:text= "${user.lastName}"> </p>
-        <p th:text= "${user.email}"> </p>
-        <p th:text= "${user.description}"> </p>
-    </div>
+
+    <table>
+        <tr th:each="user : ${user}">
+            <td th:text="${user.name}"></td>
+            <td th:text="'ID: ' + ${user.id}"></td>
+        </tr>
+    </table>
 
 </div>
 </body>

@@ -15,9 +15,13 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user/{id}")
-    public String userProfile(@PathVariable("id") long id, Model model) {
+    public String userProfile(@PathVariable(value = "id") long id, Model model) {
         User user = userService.findUserById(id);
+        if (user != null) {
             model.addAttribute("user", user);
             return "userProfile";
+        } else {
+            return "userNotFound";
+        }
     }
 }
