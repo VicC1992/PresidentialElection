@@ -17,9 +17,18 @@
         <tr th:each="user : ${user}">
             <td th:text="${user.name}"></td>
             <td th:text="'ID: ' + ${user.id}"></td>
+            <p th:text="${user.description}"></p>
         </tr>
     </table>
 
+    <form th:action="@{/user/{id}/saveDescription}" th:object="${user}" method="post">
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                      th:field="*{description}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>
 </body>
 </html>
