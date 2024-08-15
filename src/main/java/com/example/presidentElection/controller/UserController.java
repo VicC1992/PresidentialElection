@@ -25,6 +25,12 @@ public class UserController {
         }
     }
 
+    @GetMapping("/user/{id}/saveDescription")
+    public String addDescription(@PathVariable(value = "id") long id,@ModelAttribute("user") UserDto userDto, Model model) {
+        User existingUser = userService.findUserById(id);
+        return "addUserDescription";
+    }
+
     @PostMapping("/user/{id}/saveDescription")
     public String saveDescription(@PathVariable(value = "id") long id,@ModelAttribute("user") UserDto userDto,@RequestParam String description, Model model) {
         User existingUser = userService.findUserById(id);
